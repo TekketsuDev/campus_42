@@ -1,0 +1,2 @@
+find .-print -delete \( -name '*~' -o -name '#*#' \)
+
