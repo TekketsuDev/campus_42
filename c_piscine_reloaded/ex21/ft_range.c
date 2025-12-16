@@ -1,43 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 19:40:57 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/12 19:55:56 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/16 19:27:59 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/16 19:38:03 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
-int	ft_strlen(char *str)
+int	*ft_range(int min, int max)
 {
-	int	size;
-
-	size = 0;
-	while (str[size] != '\0')
-		size++;
-	return (size);
-}
-
-char	*ft_strdup(char *src)
-{
-	int		i;
-	char	*src_cpy;
+	int	*num_matrix;
+	int	i;
 
 	i = 0;
-	if (!src[i])
+	if (max <= min)
 		return (NULL);
-	src_cpy = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!src_cpy)
-		return (NULL);
-	while (src[i] != '\0')
+	num_matrix = (int *)malloc(sizeof(int) * (max - min));
+	while (i < (max - min))
 	{
-		src_cpy[i] = src[i];
+		num_matrix[i] = min + i;
 		i++;
 	}
-	src_cpy[i] = '\0';
-	return (src_cpy);
+	return (num_matrix);
 }

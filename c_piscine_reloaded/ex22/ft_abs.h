@@ -1,43 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 19:40:57 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/12 19:55:56 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/16 22:13:46 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/16 22:14:04 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
-int	ft_strlen(char *str)
-{
-	int	size;
+# define ABS (x) ( x > 0 ? x : -x)
 
-	size = 0;
-	while (str[size] != '\0')
-		size++;
-	return (size);
-}
-
-char	*ft_strdup(char *src)
-{
-	int		i;
-	char	*src_cpy;
-
-	i = 0;
-	if (!src[i])
-		return (NULL);
-	src_cpy = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!src_cpy)
-		return (NULL);
-	while (src[i] != '\0')
-	{
-		src_cpy[i] = src[i];
-		i++;
-	}
-	src_cpy[i] = '\0';
-	return (src_cpy);
-}
+#endif

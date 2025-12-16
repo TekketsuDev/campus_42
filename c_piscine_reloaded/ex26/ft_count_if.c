@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 19:40:57 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/12 19:55:56 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/16 21:38:31 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/16 21:52:52 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	ft_strlen(char *str)
+int	ft_count_if(char **tab, int (*f)(char*))
 {
-	int	size;
+	int	i;
+	int	count;
 
-	size = 0;
-	while (str[size] != '\0')
-		size++;
-	return (size);
-}
-
-char	*ft_strdup(char *src)
-{
-	int		i;
-	char	*src_cpy;
-
+	count = 0;
 	i = 0;
-	if (!src[i])
-		return (NULL);
-	src_cpy = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!src_cpy)
-		return (NULL);
-	while (src[i] != '\0')
+	while (tab[i] != 0)
 	{
-		src_cpy[i] = src[i];
+		if ((*f)(tab[i]) == 1)
+			count++;
 		i++;
 	}
-	src_cpy[i] = '\0';
-	return (src_cpy);
 }

@@ -1,43 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 19:40:57 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/12 19:55:56 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/16 21:40:08 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/16 21:40:10 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	ft_strlen(char *str)
+int	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	int	size;
+	int	i;
 
-	size = 0;
-	while (str[size] != '\0')
-		size++;
-	return (size);
-}
-
-char	*ft_strdup(char *src)
-{
-	int		i;
-	char	*src_cpy;
-
-	i = 0;
-	if (!src[i])
-		return (NULL);
-	src_cpy = malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!src_cpy)
-		return (NULL);
-	while (src[i] != '\0')
+	while (i != length)
 	{
-		src_cpy[i] = src[i];
+		(*f)(tab[i]);
 		i++;
 	}
-	src_cpy[i] = '\0';
-	return (src_cpy);
 }
