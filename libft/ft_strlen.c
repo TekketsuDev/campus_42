@@ -1,6 +1,6 @@
 
-#include "libft.h"
-
+//#include "libft.h"
+#include <stddef.h>
 size_t ft_strlen (const char *s)
 {
   int i;
@@ -9,8 +9,5 @@ size_t ft_strlen (const char *s)
   if (!s)
     return (0);
   while (s[i] != '\0')
-  {
     i++;
-  }
-  return (i);
-}
+	return (i);
