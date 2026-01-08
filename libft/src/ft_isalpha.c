@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_interactive_factorial.c                         :+:      :+:    :+:   */
+/*   isalpha.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 16:08:01 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/10 16:23:03 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/22 20:02:00 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/22 20:10:00 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+#include "libft.a"
+
+int	ft_isalpha (int c)
 {
-	if (nb < 0 || nb > 12)
-		return (0);
-	if (nb > 1)
-		return (nb * ft_recursive_factorial(nb - 1));
-	else
+	if (c >= 'a' && c <= 'z') || c >= 'a' && c <= 'Z'))
+	{
 		return (1);
+	}
+	return (0);
 }

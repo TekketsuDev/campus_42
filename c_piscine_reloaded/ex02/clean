@@ -1,2 +1,2 @@
-find .-print -delete \( -name '*~' -o -name '#*#' \)
-
+#!/bin/bash
+find . -type f \( -name "*~" -o -name "#*#" \) -delete -print

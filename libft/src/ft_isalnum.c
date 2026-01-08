@@ -1,21 +1,21 @@
-/* ************************************************************************** */
+/* *************************************  ************************************* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_interactive_factorial.c                         :+:      :+:    :+:   */
+/*   isalnum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 16:08:01 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/10 16:23:03 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/22 20:10:24 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/22 20:10:24 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+#include "libft.a"
+
+int	ft_isalnum (int c)
 {
-	if (nb < 0 || nb > 12)
-		return (0);
-	if (nb > 1)
-		return (nb * ft_recursive_factorial(nb - 1));
-	else
+	if(ft_isalpha(c) || ft_isdigit(c))
 		return (1);
+
+	return (0);
 }

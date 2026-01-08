@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_interactive_factorial.c                         :+:      :+:    :+:   */
+/*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/10 16:08:01 by vjamet-s          #+#    #+#             */
-/*   Updated: 2025/12/10 16:23:03 by vjamet-s         ###   ########.fr       */
+/*   Created: 2025/12/22 20:05:38 by vjamet-s          #+#    #+#             */
+/*   Updated: 2025/12/22 20:09:57 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+#include "libft.a"
+
+int	ft_isdigit (int c)
 {
-	if (nb < 0 || nb > 12)
-		return (0);
-	if (nb > 1)
-		return (nb * ft_recursive_factorial(nb - 1));
-	else
+	if (c >= '0' && c <= '9')
 		return (1);
+	return (0);
 }

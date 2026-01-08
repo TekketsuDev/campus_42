@@ -17,7 +17,7 @@ int	ft_strlen(char *str)
 	int	size;
 
 	size = 0;
-	while (str[size] != '\0')
+	while (str[size])
 		size++;
 	return (size);
 }
@@ -28,12 +28,12 @@ char	*ft_strdup(char *src)
 	char	*src_cpy;
 
 	i = 0;
-	if (!src[i])
+	if (!src)
 		return (NULL);
-	src_cpy = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	src_cpy = (char *)malloc(ft_strlen(src) + 1);
 	if (!src_cpy)
 		return (NULL);
-	while (src[i] != '\0')
+	while (src[i])
 	{
 		src_cpy[i] = src[i];
 		i++;

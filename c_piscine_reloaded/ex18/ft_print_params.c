@@ -9,8 +9,8 @@
 /*   Updated: 2025/12/12 17:27:29 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <unistd.h>
+
+void	ft_putchar(char c);
 
 int	main(int argc, char *argv[])
 {
@@ -21,10 +21,10 @@ int	main(int argc, char *argv[])
 	{
 		while (*argv[i] != '\0')
 		{
-			write (1, argv[i]++, 1);
+			ft_putchar(*argv[i]++);
 		}
 		i++;
-		write (1, "\n", 1);
+		ft_putchar('\n');
 	}
 	return (0);
 }

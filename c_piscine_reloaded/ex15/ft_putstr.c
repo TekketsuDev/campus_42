@@ -10,27 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
 #include <unistd.h>
+
+void	ft_putchar(char c);
 
 void	ft_putstr(char *str)
 {
-	int	size;
-
-	size = 0;
-	while (str[size] != '\0')
-	{
-		size++;
-	}
-	write(1, str, size);
+	while (*str)
+		ft_putchar(*str++);
 }
-/*
-int	main(void)
-{
-	char	*b;
-
-	b = "Hola tengo hambre";
-	ft_putstr(b);
-	return (0);
-}
-*/

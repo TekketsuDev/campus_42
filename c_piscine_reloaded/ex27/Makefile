@@ -10,20 +10,18 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-SRCS=srcs/ft_putchar.c srcs/ft_putstr.c srcs/ft_strcmp.c srcs/ft_strlen.c srcs/ft_swap.c
-OBJECTS=ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
-HEADERS_FOLDER=includes
+NAME = ft_display_file
+CFLAGS = -Wall -Wextra -Werror
+SRC = ft_display_file.c
+OBJ = ft_display_file.o
 
 all: $(NAME)
 
-$(NAME):
-	cc -I$(HEADERS_FOLDER) -c $(SRCS)
-	ar -rv $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+$(NAME): $(OBJ)
+	cc $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ): $(SRC)
+	cc $(CFLAGS) -c $(SRC) -o $(OBJ)
 
 clean:
 	rm -f $(OBJ)
@@ -31,4 +29,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+
+.PHONY: all clean fclean
+
