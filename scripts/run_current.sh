@@ -47,7 +47,7 @@ FILE="$1"
 }
 
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-LIBFT="$ROOT/libft"
+LIBFT="$ROOT/libft/src"
 TEST_C="$LIBFT/test.c"
 
 [[ -d "$LIBFT" ]] || {

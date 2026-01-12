@@ -19,11 +19,11 @@ char  *ft_strnstr(const char *s,const char *sb, size_t n)
     if (s[i] == sb[0])
     {
       j = 0;
-      while((i + j) < n && s[j] && s[i + j] == sb[j])
+      while((i + j) < n && sb[j] && s[i + j] == sb[j])
       {
         j++;
         if (sb[j] == '\0')
-          return (char *)s(i + j);
+          return (char *)(s + i);
       }
     }
     i++;
@@ -39,23 +39,23 @@ void test(const char *s, const char *sb, size_t n)
 }
 int main(void)
 {
-ft_strnstr("hello world", "hello", 11);   // → "hello world"
-ft_strnstr("hello world", "world", 11);   // → "world"
-ft_strnstr("hello world", "o w", 11);     // → "o world"
-ft_strnstr("hello world", "world", 5);    // → NULL
-ft_strnstr("abcdef", "def", 5);           // → NULL
-ft_strnstr("", "a", 1);                   // → NULL
-ft_strnstr("", "", 1);                    // → ""
-ft_strnstr("abcd", "cd", 4);              // → "cd"
-ft_strnstr("abcd", "cd", 3);              // → NULL
-ft_strnstr("aaaaa", "aaa", 5);            // → "aaaaa"
-ft_strnstr("aaaaa", "aaa", 3);            // → "aaaaa"
-ft_strnstr("aaaaa", "aaa", 2);            // → NULL
-ft_strnstr("Hello", "hello", 5);           // → NULL
-ft_strnstr("Hello", "Hell", 5);            // → "Hello"
-ft_strnstr("hello", "h", 0);               // → NULL
-ft_strnstr("hello", "", 0);                // → "hello"
-ft_strnstr("hi", "hello", 5);              // → NULL
+test("hello world", "hello", 11);   // → "hello world"
+test("hello world", "world", 11);   // → "world"
+test("hello world", "o w", 11);     // → "o world"
+test("hello world", "world", 5);    // → NULL
+test("abcdef", "def", 5);           // → NULL
+test("", "a", 1);                   // → NULL
+test("", "", 1);                    // → ""
+test("abcd", "cd", 4);              // → "cd"
+test("abcd", "cd", 3);              // → NULL
+test("aaaaaa", "aaa", 5);            // → "aaaaa"
+test("aaaaa", "aaa", 3);            // → "aaaaa"
+test("aaaaa", "aaa", 2);            // → NULL
+test("Hello", "hello", 5);           // → NULL
+test("Hello", "Hell", 5);            // → "Hello"
+test("hello", "h", 0);               // → NULL
+test("hello", "", 0);                // → "hello"
+test("hi", "hello", 5);              // → NULL
 
 
 // a y b deben ser iguales
