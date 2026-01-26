@@ -1,4 +1,4 @@
-//#include "libft.a"
+#include "libft.h"
 #include <string.h>
 #include <stddef.h>
 

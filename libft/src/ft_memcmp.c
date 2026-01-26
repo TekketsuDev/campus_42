@@ -1,4 +1,4 @@
- //#include "libft.a"
+#include "libft.h"
 #include <stddef.h>
 
  int ft_memcmp(const void *s1, const void *s2, size_t n)

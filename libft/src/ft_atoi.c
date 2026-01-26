@@ -1,5 +1,6 @@
+
+#include "libft.h"
 /*
-//#include "libft.a"
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
