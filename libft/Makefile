@@ -38,7 +38,7 @@ bonus: $(OBJECTS) $(B_OBJECTS)
 	ranlib $(NAME)
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(B_SRCS)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) -I$(INCLUDES) $(SRCS) $(B_SRCS)
 	gcc -shared -o libft.so $(OBJECTS) $(B_OBJECTS)
 
 %.o: %.c
