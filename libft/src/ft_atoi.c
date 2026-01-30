@@ -1,26 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/30 13:32:47 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/01/30 13:32:52 by vjamet-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
-/*
-#include <stdio.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <stdlib.h>
-*/
-int ft_atoi (const char *nptr)
+
+int	ft_atoi(const char *nptr)
 {
-  int i;
-  int conv;
+	int	i;
+	int	sign;
+	int	result;
 
-  i = 0;
-  conv = 0;
-
-  while (nptr[i] != '\0' && nptr[i] >= '0' && nptr[i] <= '9')
-  {
-    conv = conv * 10 + (nptr[i] - '0');
-    i++;
-  }
-  return conv;
+	i = 0;
+	sign = 1;
+	result = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = result * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
 /*
 int main(void)

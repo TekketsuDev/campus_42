@@ -1,23 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/30 13:41:19 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/01/30 13:41:45 by vjamet-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <string.h>
-#include <stddef.h>
 
-char  *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-  unsigned char byte;
-  const char *last = NULL;
+	unsigned char	byte;
+	const char		*last;
 
-  byte = (unsigned char)c;
-
-  if (!s)
-    return (NULL);
-  while (*s)
-  {
-    if ((unsigned char)*s == byte)
-      last = s;
-    s++;
-  }
-  if (byte == '\0')
-    return (char *)s;
-  return (char *)last;
+	byte = (unsigned char)c;
+	last = NULL;
+	while (*s)
+	{
+		if ((unsigned char)*s == byte)
+			last = s;
+		s++;
+	}
+	if (byte == '\0')
+		return ((char *)s);
+	return ((char *)last);
 }

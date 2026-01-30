@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/30 13:30:58 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/01/30 13:32:38 by vjamet-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <string.h>
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-  if (c >= 'A' && c <= 'Z')
-    return (c + ('a' - 'A'));
-  return (c);
+	if (c >= 'A' && c <= 'Z')
+		return (c + ('a' - 'A'));
+	return (c);
 }
-
