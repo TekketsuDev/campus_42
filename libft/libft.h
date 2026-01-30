@@ -28,13 +28,6 @@
 #  define BUFFER_SIZE 1
 # endif
 
-typedef struct s_list
-{
-	void			*content;
-	int				index;
-	struct s_list	*next;
-}					t_list;
-
 /* Mandatory Functions */
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
@@ -70,27 +63,5 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
-/* Bonus Functions */
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstnew(void *content);
-int		ft_lstsize(t_list *lst);
-
-/* ft_printf & GNL */
-int		ft_printf(const char *format, ...);
-int		prtchar(char c);
-int		prthexlow(unsigned int n);
-int		prthexup(unsigned int n);
-int		prtint(int n);
-int		prtptr(void *ptr);
-int		prtstr(char *s);
-int		prtunsigint(unsigned int n);
-char	*get_next_line(int fd);
 
 #endif
