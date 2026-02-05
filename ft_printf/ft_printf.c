@@ -126,16 +126,16 @@ const char *eval_flags (t_form *t, const char *format)
 }
 const char *eval_width (t_form *t, const char *format)
 {
-  while (*format >= 0 )
-  	while ( >= '0' && nptr[i] <= '9')
+  	while ( *format >= '0' && *format <= '9')
 	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
+		t->width = width * 10 + (*format - '0');
+		format++;
 	}
-  return (format);
+	return (format);
 }
 
-[flags][width][.precision][length]specifier 
+
+[flags][width][.precision][length][specifier]
 
 int main(void)
 {
