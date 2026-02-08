@@ -52,6 +52,8 @@ In no case does a nonexistent or small field width cause truncation of a field; 
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
+
 
 typedef struct s_form
 {
@@ -76,7 +78,7 @@ void  init_flag_eval (t_form *flags)
     flags->precision = -1;
     flags->spec = 0;
 }
-
+/*
 int		ft_printf(char const *restrict format, ...)
 {
 	va_list	ap;
@@ -86,10 +88,10 @@ int		ft_printf(char const *restrict format, ...)
   va_copy();
   va_end();
 }
-
+*/
 //%-05d → flags: -,0 → width: 5 → zero ignorado
-pointer → "A %d B %x C %s\n"
-arguments   → [10][255]["hi"]
+//pointer → "A %d B %x C %s\n"
+//arguments   → [10][255]["hi"]
 
 int   is_spec(char c)
 {
@@ -105,7 +107,7 @@ const char *eval_flags (t_form *t, const char *format)
 {
   while(is_flag(*format))
   {
-    if (*format = '0')
+    if (*format == '0')
       t->zero = 1;
     else if (*format == '-')
       t->minus = 1;
@@ -118,37 +120,49 @@ const char *eval_flags (t_form *t, const char *format)
     format++;
   }
   //To contrarrest contrary effects after reading all flags
-  if (f->minus)
-    f->zero = 0;
-  if (f->plus)
-    f->space = 0;
+  if (t->minus)
+    t->zero = 0;
+  if (t->plus)
+    t->space = 0;
   return (format);
 }
 const char *eval_width (t_form *t, const char *format)
 {
   	while ( *format >= '0' && *format <= '9')
 	{
-		t->width = width * 10 + (*format - '0');
+		t->width = t->width * 10 + (*format - '0');
 		format++;
 	}
 	return (format);
 }
 
 
-[flags][width][.precision][length][specifier]
+//[flags][width][.precision][length][specifier]
 
 int main(void)
 {
+  const char *format = "Maia es %muy guapa%0500s";
+
+  t_form forma;
   while (*format) {
     if (*format == '%')
     {
       format++;
       //Remember that we return the last pointer address to evaluate the other things
-      format = init_flags(&format);
-      format = eval_flags(t_flag_eval, &format);
-      format = eval_width(t_flag_eval, &format);
+      init_flag_eval(&forma);
+      format = eval_flags(&forma, format);
+      format = eval_width(&forma, format);
+       if (is_spec(*format))
+      {
+                forma.spec = *format;
+                format++;
+      }
+    }
+    else{
+      write(1,format++,1);
     }
   }
+  /*
   char c = 'a';
   printf("%--c\n", c);
   printf("%05d\n", 42);     // 00042
@@ -162,7 +176,7 @@ int main(void)
 printf("|% d|\n", 0);    // "| 0|"
 printf("|% d|\n", -42);  // "|-42|"
   printf("|%+ d|\n", 42);  // "|+42|"
-
+*/
 
   return (0);
 }
