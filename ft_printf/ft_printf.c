@@ -6,7 +6,7 @@
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 09:09:22 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/04 10:04:05 by vjamet-s         ###   ########.fr       */
+/*   Updated: 2026/02/09 21:22:45 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,11 @@ In no case does a nonexistent or small field width cause truncation of a field; 
 * By default a sign is used only for negative numbers. A + overrides a space if both are used. 
  [flags][width][.precision][length]specifier */
 
-<<<<<<< HEAD
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 
 #inlcude "ft_printf.h"
-
-typedef struct s_form
-{
-  //c, s, p, d, i, x, X, % 
-	int minus;      // '-'
-	int zero;       // '0'
-	int hash;       // '#'
-	int plus;       // '+'
-	int space;      // ' '
-	int width;      // field width
-	int precision;  // -1 if not present (bonus with '.')
-	char spec;      // conversion: c s p d i u x X %
-}	t_form;
 
 typedef struct s_form_node
 {
@@ -83,23 +69,9 @@ void  init_flag_eval (t_form *flags)
     flags->hash = 0;
     flags->plus = 0;
     flags->space = 0;
-    flags->precision = -1;
+    //flags->precision = -1;
     flags->spec = 0;
 }
-/*
-int		ft_printf(char const *restrict format, ...)
-{
-	va_list	ap;
-	
-	va_start(ap, format);
-	va_arg();
-	va_end();
-}
-*/
-//%-05d → flags: -,0 → width: 5 → zero ignorado
-//pointer → "A %d B %x C %s\n"
-//arguments   → [10][255]["hi"]
-
 int   is_spec(char c)
 {
   return (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' ||
@@ -154,14 +126,56 @@ const char *eval_precision(t_form *t, const char *format)
 	}
 	return (format);
 }
+eval_padding (t_form *t)
+{
+  if ()
+}
+char const *resolve_flags(t_form *t,args){
+  char * construct;
+  while(t->precision !=0 && strlen(args) )
+  {
+    
+    t->precision--;
+  }
+  if (t->width )
+}
+const  *print_arg(t_form *t, //use construct from resolve_flags
+                  construct)
+{
+  
+  switch (t->spec) {
+    case 'c':
+      return ft_putchar(va_arg(args, char *));
+    case 's':
+      return ft_putstr(va_arg(args, char *));
+    case 'p':
+      return ft_putptr(va_arg(args, void *));
+    case 'd':
+    case 'i':
+      return ft_putint(va_arg(args, int));
+    case 'x':
+      return ft_puthex(va_arg, char *);
+    case 'X':
 
-
+      //no sirve buscar otra manera ya que no podemos pasar el argumento que utilizamos en ft_lower
+    return ft_puthex(ft_striteri(construct,ft_tolower());
+    case '%':
+    ft_putchar('%');
+    break;
+    case default:
+      write(1, "Error",5);
+  }
+}
 //[flags][width][.precision][length][specifier]
 
 int main(void)
 {
-  const char *format = "Maia es %muy guapa%0500s";
-
+  int count = 0;
+  char * otra = "hola"
+  const char *format = "Maia es %s muy guapa%0500s%d", otra, count;
+  va_list args;
+  va_start(args, format);
+  
   t_form forma;
   while (*format) {
     if (*format == '%')
@@ -176,6 +190,7 @@ int main(void)
          forma.spec = *format;
          format++;
       }
+      count = resolve_spec(%forma, va_list args);
     }
     else{
       write(1,format++,1);
@@ -218,3 +233,15 @@ printf("|% d|\n", -42);  // "|-42|"
 
   return (0);
 }
+/*
+int		ft_printf(char const *restrict format, ...)
+{
+	va_list	ap;
+	
+	va_start(ap, format);
+	va_arg();
+	va_end();
+}
+*/
+
+
