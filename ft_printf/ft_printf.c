@@ -18,9 +18,7 @@
 *	%i entero int
 *	%x hexadecimal char toLowercase, %X hexadecimal char toUpperCase
 *	%% print % literal
-*/
 
-/*
  *
  * The field width
 
@@ -50,10 +48,12 @@ In no case does a nonexistent or small field width cause truncation of a field; 
 * By default a sign is used only for negative numbers. A + overrides a space if both are used. 
  [flags][width][.precision][length]specifier */
 
+<<<<<<< HEAD
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 
+#inlcude "ft_printf.h"
 
 typedef struct s_form
 {
@@ -67,6 +67,14 @@ typedef struct s_form
 	int precision;  // -1 if not present (bonus with '.')
 	char spec;      // conversion: c s p d i u x X %
 }	t_form;
+
+typedef struct s_form_node
+{
+	s_form current;
+	struct s_form_node *next;
+}	t_form_node;
+
+
 void  init_flag_eval (t_form *flags)
 {
     flags->minus = 0;
@@ -84,9 +92,8 @@ int		ft_printf(char const *restrict format, ...)
 	va_list	ap;
 	
 	va_start(ap, format);
-  va_arg();
-  va_copy();
-  va_end();
+	va_arg();
+	va_end();
 }
 */
 //%-05d → flags: -,0 → width: 5 → zero ignorado
@@ -135,6 +142,18 @@ const char *eval_width (t_form *t, const char *format)
 	}
 	return (format);
 }
+const char *eval_precision(t_form *t, const char *format)
+{
+	if (*format == '.'){
+		format++;
+	}
+	while (*format >= '0' && *format <= '9' && t->precision != -1)
+	{
+		t->precision = t->precision * 10 + (*format - '0');
+		format++;
+	}
+	return (format);
+}
 
 
 //[flags][width][.precision][length][specifier]
@@ -154,12 +173,13 @@ int main(void)
       format = eval_width(&forma, format);
        if (is_spec(*format))
       {
-                forma.spec = *format;
-                format++;
+         forma.spec = *format;
+         format++;
       }
     }
     else{
       write(1,format++,1);
+	  format++;
     }
   }
   /*
@@ -171,12 +191,30 @@ int main(void)
   printf("%8cd\n", 123456);
   printf("%08d\n", 123456);
   printf("%60d\n", 4444);
+||||||| parent of dfd1ebc (update)
+  }
+  char c = 'a';
+  printf("%--c\n", c);
+  printf("%05d\n", 42);     // 00042
+  printf("%05dhola hoa\n", 7);
+  printf("%05d ddHOa:\n", 12345);
+  printf("%8cd\n", 123456);
+  printf("%08d\n", 123456);
+  printf("%60d\n", 4444);
+	else
+		write(1,format,1);
+	}
 
   printf("|% d|\n", 42);   // "| 42|"
 printf("|% d|\n", 0);    // "| 0|"
 printf("|% d|\n", -42);  // "|-42|"
   printf("|%+ d|\n", 42);  // "|+42|"
 */
+  printf("|% d|\n", 42);   // "| 42|"
+printf("|% d|\n", 0);    // "| 0|"
+printf("|% d|\n", -42);  // "|-42|"
+  printf("|%+ d|\n", 42);  // "|+42|"
+
 
   return (0);
 }
