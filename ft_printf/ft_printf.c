@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#inlcude "ft_printf.h"
 /*
 *	%c , %s char
 *	%p el void * se imprime en hexadecimal
@@ -134,31 +133,27 @@ char const *resolve_flags(t_form *t,args){
   char * construct;
   while(t->precision !=0 && strlen(args) )
   {
-    
     t->precision--;
   }
-  if (t->width )
+  if (t->width)
 }
-const  *print_arg(t_form *t, //use construct from resolve_flags
-                  construct)
+const  *print_arg(t_form *t, va_list ap)
 {
-  
   switch (t->spec) {
     case 'c':
-      return ft_putchar(va_arg(args, char *));
-    case 's':
-      return ft_putstr(va_arg(args, char *));
-    case 'p':
-      return ft_putptr(va_arg(args, void *));
-    case 'd':
-    case 'i':
-      return ft_putint(va_arg(args, int));
-    case 'x':
-      return ft_puthex(va_arg, char *);
-    case 'X':
-
-      //no sirve buscar otra manera ya que no podemos pasar el argumento que utilizamos en ft_lower
-    return ft_puthex(ft_striteri(construct,ft_tolower());
+		return ft_put_c(f, ap);
+	case 's':
+		return ft_put_s(f, ap)
+	case 'p':
+		return ft_put_p(f, ap);
+	case 'd':
+	case 'i':
+		return ft_put_di(f, ap);
+	case 'u': 
+		return ft_put_u(f, ap);
+	case 'x':
+	case 'X':
+		return ft_put_hex(f, ap);
     case '%':
     ft_putchar('%');
     break;
@@ -233,15 +228,4 @@ printf("|% d|\n", -42);  // "|-42|"
 
   return (0);
 }
-/*
-int		ft_printf(char const *restrict format, ...)
-{
-	va_list	ap;
-	
-	va_start(ap, format);
-	va_arg();
-	va_end();
-}
-*/
-
 
