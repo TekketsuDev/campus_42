@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 16:21:52 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/14 16:50:57 by vjamet-s         ###   ########.fr       */
+/*   Created: 2026/02/16 20:22:38 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/02/16 20:22:45 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	put_base_rec(unsigned long n, const char *base)
+{
+	int	base_len;
+	int	count;
 
-int	ft_printf(const char *format, ...);
-int	print_arg(char c, va_list ap);
+	base_len = 0;
+	count = 0;
+	while (base[base_len])
+		base_len++;
+	if (n >= (unsigned long)base_len)
+		count += put_base_rec(n / (unsigned long)base_len, base);
+	count += write(1, &base[n % (unsigned long)base_len], 1);
+	return (count);
+}
 
-int	ft_put_c(int c);
-int	ft_put_s(char *s);
-int	ft_put_p(void *p);
-int	ft_put_int(int n);
-int	ft_put_u(unsigned int n);
-int	ft_put_hex(unsigned int n, int upper);
-int	put_base_rec(unsigned long n, const char *base);
-#endif /* FT_PRINTF_H */
+int	ft_put_c(int c)
+{
+	return (write(1, &c, 1));
+}

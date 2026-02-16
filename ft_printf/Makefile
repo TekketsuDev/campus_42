@@ -11,32 +11,35 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
+LIBFT = libft/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+SRC = \
+	ft_printf.c \
+	ft_conversions.c \
+	ft_utils.c
 
-HEADERS = ft_printf.h
-SRCS = ft_printf.c
-
-OBJS = $(SRCS:.c=.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	make -C libft
+	cp $(LIBFT) $(NAME)
+	ar rcs $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-so: $(OBJS)
-	$(CC) -nostartfiles -shared -o libft.so $(OBJS)
+	$(CC) $(CFLAGS) -Ilibft -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	make -C libft clean
+	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) libft.so
+	make -C libft fclean
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re so
+.PHONY: all clean fclean re
 

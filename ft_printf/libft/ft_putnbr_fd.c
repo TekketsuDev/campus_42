@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 16:21:52 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/14 16:50:57 by vjamet-s         ###   ########.fr       */
+/*   Created: 2026/01/30 16:32:58 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/01/30 16:33:08 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	c;
+	long	nb;
 
-# include <stdarg.h>
-# include <unistd.h>
-
-int	ft_printf(const char *format, ...);
-int	print_arg(char c, va_list ap);
-
-int	ft_put_c(int c);
-int	ft_put_s(char *s);
-int	ft_put_p(void *p);
-int	ft_put_int(int n);
-int	ft_put_u(unsigned int n);
-int	ft_put_hex(unsigned int n, int upper);
-int	put_base_rec(unsigned long n, const char *base);
-#endif /* FT_PRINTF_H */
+	nb = (long)n;
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb = -nb;
+	}
+	if (nb >= 10)
+		ft_putnbr_fd((int)(nb / 10), fd);
+	c = (char)('0' + (nb % 10));
+	write(fd, &c, 1);
+}

@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 16:21:52 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/14 16:50:57 by vjamet-s         ###   ########.fr       */
+/*   Created: 2026/01/30 13:23:39 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/01/30 13:23:59 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*p;
+	size_t	i;
+	size_t	j;
 
-int	ft_printf(const char *format, ...);
-int	print_arg(char c, va_list ap);
-
-int	ft_put_c(int c);
-int	ft_put_s(char *s);
-int	ft_put_p(void *p);
-int	ft_put_int(int n);
-int	ft_put_u(unsigned int n);
-int	ft_put_hex(unsigned int n, int upper);
-int	put_base_rec(unsigned long n, const char *base);
-#endif /* FT_PRINTF_H */
+	if (!s1 || !s2)
+		return (NULL);
+	p = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!p)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		p[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		p[i + j] = s2[j];
+		j++;
+	}
+	p[i + j] = '\0';
+	return (p);
+}

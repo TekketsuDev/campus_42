@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 16:21:52 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/14 16:50:57 by vjamet-s         ###   ########.fr       */
+/*   Created: 2026/01/30 00:00:00 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/02/02 14:43:38 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+{
+	unsigned int	i;
 
-int	ft_printf(const char *format, ...);
-int	print_arg(char c, va_list ap);
-
-int	ft_put_c(int c);
-int	ft_put_s(char *s);
-int	ft_put_p(void *p);
-int	ft_put_int(int n);
-int	ft_put_u(unsigned int n);
-int	ft_put_hex(unsigned int n, int upper);
-int	put_base_rec(unsigned long n, const char *base);
-#endif /* FT_PRINTF_H */
+	if (!s || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/14 16:21:52 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/14 16:50:57 by vjamet-s         ###   ########.fr       */
+/*   Created: 2026/01/30 13:18:55 by vjamet-s          #+#    #+#             */
+/*   Updated: 2026/01/30 13:19:24 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-int	ft_printf(const char *format, ...);
-int	print_arg(char c, va_list ap);
-
-int	ft_put_c(int c);
-int	ft_put_s(char *s);
-int	ft_put_p(void *p);
-int	ft_put_int(int n);
-int	ft_put_u(unsigned int n);
-int	ft_put_hex(unsigned int n, int upper);
-int	put_base_rec(unsigned long n, const char *base);
-#endif /* FT_PRINTF_H */
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n && s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i]
+				- (unsigned char)s2[i]);
+		i++;
+	}
+	if (i < n)
+		return ((unsigned char)s1[i]
+			- (unsigned char)s2[i]);
+	return (0);
+}
