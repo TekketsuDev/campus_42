@@ -82,3 +82,6 @@
 **/*.swo
 **/*~
 
+**/libft-war-machine/*
+**/libftTester/*
+
