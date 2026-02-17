@@ -1,2 +1,84 @@
 **/.git
 **/.git/**
+
+# --- Object files (recursive) ---
+**/*.o
+**/*.obj
+**/*.lo
+
+# --- Static / shared libraries ---
+**/*.a
+**/*.lib
+**/*.so
+**/*.so.*
+**/*.dylib
+**/*.dll
+
+# --- Executables ---
+**/*.out
+**/*.exe
+**/*.app
+**/*.elf
+
+# --- Dependency files (gcc/clang -MMD/-MP etc.) ---
+**/*.d
+**/*.deps
+**/*.P
+**/*.Po
+
+# --- Precompiled headers / modules ---
+**/*.gch
+**/*.pch
+**/*.pcm
+
+# --- Debug / profiling ---
+**/*.dbg
+**/*.dSYM/
+**/*.gcno
+**/*.gcda
+**/*.gcov
+**/*.profraw
+**/*.profdata
+**/gmon.out
+
+# --- Sanitizers / core dumps ---
+**/core
+**/core.*
+
+# --- Build directories (common conventions) ---
+**/build/
+**/Build/
+**/bin/
+**/obj/
+**/objs/
+**/out/
+**/dist/
+**/cmake-build-*/
+
+# --- Autotools ---
+**/Makefile.in
+**/aclocal.m4
+**/autom4te.cache/
+**/compile
+**/config.cache
+**/config.log
+**/config.status
+**/configure
+**/depcomp
+**/install-sh
+**/missing
+**/stamp-h1
+**/ltmain.sh
+
+# --- CMake ---
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/CTestTestfile.cmake
+**/install_manifest.txt
+
+# --- GNU make temporary / editor swap ---
+**/*.swp
+**/*.swo
+**/*~
+

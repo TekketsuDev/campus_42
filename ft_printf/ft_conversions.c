@@ -47,17 +47,18 @@ int	ft_put_u(unsigned int n)
 	return (put_base_rec((unsigned long)n, "0123456789"));
 }
 
-int	ft_put_p(void *p)
+int ft_put_p(void *p)
 {
-	unsigned long	addr;
-	int				count;
+    unsigned long addr;
+    int           count;
 
-	addr = (unsigned long)p;
-	count = write(1, "0x", 2);
-	if (addr == 0)
-		return (count + write(1, "0", 1));
-	return (count + put_base_rec(addr, "0123456789abcdef"));
+    if (!p)
+        return (write(1, "(nil)", 5));
+    addr = (unsigned long)p;
+    count = write(1, "0x", 2);
+    return (count + put_base_rec(addr, "0123456789abcdef"));
 }
+
 
 int	ft_put_hex(unsigned int n, int upper)
 {
