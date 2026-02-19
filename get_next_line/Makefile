@@ -13,27 +13,26 @@ NAME = get_next_line
 CC = cc
 HEADERS = get_next_line.h
 CFLAGS = -Wall -Wextra -Werror
-SRC = \
-	get_next_line.c \
-	ft_next_line_utils.c \
+SRC = get_next_line.c \
+	get_next_line_utils.c \
 
 OBJ = $(SRC:.c=.o)
+AR = ar rcs
+RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C libft
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
-%.o: %.c $(HEADERS)
+%.o: %.c get_next_line.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
