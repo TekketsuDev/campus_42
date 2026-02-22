@@ -17,7 +17,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 43
 # endif
 
 char	*get_next_line(int fd);
@@ -28,5 +28,6 @@ char	*save_remainder(char *stash);
 size_t	ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
 int		has_newline(char *s);
-
+void    *ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_strdup(char *s);
 #endif

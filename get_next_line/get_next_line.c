@@ -6,18 +6,17 @@
 /*   By: vjamet-s <vjamet-s@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 09:38:37 by vjamet-s          #+#    #+#             */
-/*   Updated: 2026/02/19 09:38:39 by vjamet-s         ###   ########.fr       */
+/*   Updated: 2026/02/22 14:06:02 by vjamet-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 char	*read_until(int fd, char *stash)
 {
 	ssize_t	bytes_read;
 	char	*buffer;
 	char	*tmp;
-
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
@@ -25,6 +24,7 @@ char	*read_until(int fd, char *stash)
 	while (!has_newline(stash) && bytes_read > 0)
 	{
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
+
 		if (bytes_read == -1)
 		{
 			free(buffer);
@@ -49,8 +49,10 @@ char	*extract_line(char *stash)
 
 	i = 0;
 	j = 0;
-	if (!stash || !stash[0])
+	if (!stash || !stash[0] )
 		return (NULL);
+	if (!has_newline(stash))
+		return (ft_strdup(stash));
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\n')
@@ -67,7 +69,7 @@ char	*extract_line(char *stash)
 	return (line);
 }
 
-char	*save_remainder(char *stash)
+char	*save_extra(char *stash)
 {
 	int		i;
 	int		j;
@@ -103,7 +105,14 @@ char	*get_next_line(int fd)
 	stash = read_until(fd, stash);
 	if (!stash)
 		return (NULL);
+	if (has_newline(stash))
+	{
+		line = extract_line(stash);
+		stash = save_extra(stash);
+		return (line);
+	}
 	line = extract_line(stash);
-	stash = save_remainder(stash);
+	free(stash);
+	stash = NULL;
 	return (line);
 }

@@ -1,20 +1,19 @@
 Este proyecto ha sido creado como parte del currículo de 42 por vjamet-s
 
 # Descripcion
-Este proyecto engloba una replica la funcionalidad minima especificada por ft_printf
+Este proyecto imprime las diferentes lineas de u archivo
 
 # Instrucciones
-make #Compilamos el proyecto
 
 Si queremos utilizar esta libreria en un proyecto ajeno podemos utilizar ->
-#include "ft_printf.h"
+#include "get_next_line.h"
 
 # Recursos
 Referencias técnicas
 
 Manuales de Unix:
 
-man printf
+man read, open, malloc
 
 Uso de Inteligencia Artificial:
 
@@ -26,30 +25,32 @@ Contrastar casos límite y comportamientos esperados.
 
 # Funciones Principales
 
-**ft_printf**
-Funcion principal que recorre a string evaluando las especificaciones
+**get_next_line**  
+Lee y devuelve una línea del fd.
 
-**print_arg**
-Actua como dispatcher para organizar que tipo de spec y variable vamos a printear
+**read_until**  
+Lee del fd hasta encontrar `\n` o EOF.
 
-## Funciones de conversión
+**extract_line**  
+Saca la línea completa del buffer.
 
-**ft_put_c**
-Imprimimos el caracter
+**save_remainder**  
+Guarda lo que sobra para la siguiente llamada.
 
-**ft_put_str**
-Imprimimos la string directamente
 
-**ft_put_p**
-Evaluamos el pointer y pasamos a put_base_rec el formateo exacto
-**ft_put_int**
-Transformamos el valor interger y su simbolo
+# Utils
 
-**ft_put_hex**
-Evalua que tipo de hex vamos a procesar uppercase o lowercase
+**ft_strlen**  
+Longitud de string.
 
-## Funciones Auxiliares
+**ft_strjoin**  
+Une dos strings.
 
-**ft_put_base_rec**
-Formateamos la cadena con la base indicada y imprimimos por pantalla
+**has_newline**  
+Detecta `\n` en string.
 
+**ft_memcpy**  
+Copia memoria.
+
+**ft_strdup**  
+Duplica string.
